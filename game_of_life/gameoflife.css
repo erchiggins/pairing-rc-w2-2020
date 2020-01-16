@@ -1,0 +1,23 @@
+#board {
+    background-color: blue;
+    display: inline-block;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+#board > div {
+    margin-top: 5px;
+    height: 50px
+}
+
+span {
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+    background-color: black;
+    display: inline-block;
+}
+
+span.alive {
+    background-color: white;
+}
