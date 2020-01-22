@@ -5,46 +5,60 @@ def is_binary_search_tree(root):
 
     if root.left:
         largest_left = find_largest(root.left)
-        if largest_left > root.value:
+        if (largest_left is None) or (largest_left > root.value):
             return False
 
     if root.right:
         smallest_right = find_smallest(root.right)
-        if smallest_right < root.value:
-            print(smallest_right)
+        if (smallest_right is None) or (smallest_right < root.value):
             return False
 
     return True
 
-
+# if values are out of order, return None
 def find_largest(root):
     largest = root.value
 
     if root.right:
+        if root.right.value < root.value:
+            return None
         largest_right = find_largest(root.right)
+        if largest_right is None:
+            return None
         if largest_right > largest:
             largest = largest_right
 
     if root.left:
+        if root.left.value > root.value:
+            return None
         largest_left = find_largest(root.left)
+        if largest_left is None:
+            return None
         if largest_left > largest:
             largest = largest_left
-
     return largest
 
 
 def find_smallest(root):
-
-    print(root.value)
     smallest = root.value
 
     if root.right:
-            smallest_right = find_smallest(root.right)
-            if smallest_right < smallest:
-                smallest = smallest_right
+        if root.right.value < root.value:
+            return None
+        smallest_right = find_smallest(root.right)
+        print(smallest_right)
+        if smallest_right is None:
+            return None
+        if smallest_right < smallest:
+            smallest = smallest_right
 
     if root.left:
+        if root.left.value > root.value:
+            return None
         smallest_left = find_smallest(root.left)
+        print(smallest_left)
+        if smallest_left is None:
+            return None
         if smallest_left < smallest:
             smallest = smallest_left
 
